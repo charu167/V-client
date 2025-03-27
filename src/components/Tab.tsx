@@ -62,7 +62,7 @@ export default function Tab({ title, description, instructions }: TabProps) {
                       document.body.appendChild(link);
                       link.click();
                       link.remove();
-                    } catch (err: any) {
+                    } catch (err) {
                       if (axios.isAxiosError(err)) {
                         console.error("Axios error:", {
                           message: err.message,

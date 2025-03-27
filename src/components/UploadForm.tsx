@@ -44,7 +44,7 @@ export default function UploadForm({ onUploadSuccess }: UploadFormProps) {
       };
 
       onUploadSuccess(ws);
-    } catch (err: any) {
+    } catch (err) {
       console.error(err);
       setError("Upload failed. Please try again.");
     } finally {

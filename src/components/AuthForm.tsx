@@ -59,7 +59,7 @@ export default function AuthForm({
       }
 
       router.push(redirectTo);
-    } catch (error: any) {
+    } catch (error) {
       setError(error.response?.data?.message || "Something went wrong.");
       console.error(error);
     } finally {
