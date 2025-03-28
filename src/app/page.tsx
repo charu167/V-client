@@ -1,55 +1,42 @@
-"use client";
+import Link from "next/link";
 
-import React, { useState } from "react";
-import axios from "axios";
-
-export default function Home() {
-  // Local States
-  const [file, setFile] = useState<File | null>(null);
-
-  async function handleFileChange(event: React.ChangeEvent<HTMLInputElement>) {
-    event.preventDefault();
-    if (event.target.files && event.target.files.length > 0) {
-      setFile(event.target.files[0]);
-    }
-  }
-
-  async function handleUpload() {
-    if (!file) return;
-
-    const formData = new FormData();
-    formData.append("file", file);
-
-    try {
-      const res = await axios.post("http://localhost:3001/fileUpload", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
-      console.log("Upload response:", res.data);
-    } catch (error) {
-      console.error("Upload error:", error);
-    }
-  }
-
+export default function HomePage() {
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center p-4">
-      <div className="bg-white shadow-lg rounded-2xl p-8 w-full max-w-md">
-        <h1 className="text-2xl font-bold text-center mb-6 text-gray-800">
+    <main className="min-h-screen bg-gradient-to-br from-purple-100 to-white flex items-center justify-center px-6">
+      <div className="max-w-3xl w-full text-center bg-white rounded-3xl shadow-lg p-10 space-y-8">
+        <h1 className="text-4xl sm:text-5xl font-bold text-purple-700">
           Distributed Video Transcoder
         </h1>
-        <input
-          type="file"
-          onChange={handleFileChange}
-          className="w-full mb-4 text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
-        />
-        <button
-          onClick={handleUpload}
-          className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-md transition-colors duration-200"
-        >
-          Upload
-        </button>
+        <p className="text-gray-700 text-lg">
+          Upload your videos for fast, cloud-powered transcoding using idle
+          machines across the network.
+        </p>
+
+        <div className="grid sm:grid-cols-2 gap-6 pt-6">
+          <Link
+            href="/signup/client"
+            className="block bg-purple-600 text-white py-4 rounded-xl font-semibold hover:bg-purple-700 transition"
+          >
+            I'm a Client
+          </Link>
+          <Link
+            href="/signup/worker"
+            className="block bg-blue-600 text-white py-4 rounded-xl font-semibold hover:bg-blue-700 transition"
+          >
+            I'm a Worker
+          </Link>
+        </div>
+
+        <p className="text-sm text-gray-500 pt-4">
+          Already have an account?{" "}
+          <Link
+            href="/login"
+            className="text-purple-600 hover:underline font-medium"
+          >
+            Login here
+          </Link>
+        </p>
       </div>
-    </div>
+    </main>
   );
 }

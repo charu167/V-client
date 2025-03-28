@@ -10,7 +10,7 @@ export default function LoginPage() {
         { name: "password", type: "password", placeholder: "Password" },
       ]}
       apiEndpoint={`${process.env.NEXT_PUBLIC_BASE_URL}/user/signin`}
-      redirectTo="/"
+      redirectTo="/dashboard/client"
       defaultValues={{
         email: "",
         password: "",
