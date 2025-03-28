@@ -17,18 +17,18 @@ export default function HomePage() {
             href="/signup/client"
             className="block bg-purple-600 text-white py-4 rounded-xl font-semibold hover:bg-purple-700 transition"
           >
-            I'm a Client
+            I&apos;m a Client
           </Link>
           <Link
             href="/signup/worker"
             className="block bg-blue-600 text-white py-4 rounded-xl font-semibold hover:bg-blue-700 transition"
           >
-            I'm a Worker
+            I&apos;m a Worker
           </Link>
         </div>
 
         <p className="text-sm text-gray-500 pt-4">
-          Already have an account?{" "}
+          Already have an account?&nbsp;
           <Link
             href="/login"
             className="text-purple-600 hover:underline font-medium"
